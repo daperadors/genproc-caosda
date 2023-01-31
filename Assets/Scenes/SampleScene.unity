@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -404,4 +404,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1404327269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404327271}
+  - component: {fileID: 1404327270}
+  m_Layer: 0
+  m_Name: Map Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1404327270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404327269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f3d6d995cbe1f4cb590f2fb47b9146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OffsetX: 6
+  m_OffsetY: 3
+  m_Width: 20
+  m_Height: 20
+  m_BiomesScale: 1000
+  m_BiomesFrequency: 10
+  m_BiomaThreshold: 0.5
+  m_Scale: 1000
+  m_Frequency: 10
+  m_ObjecteThreshold: 0.9
+  m_Objectes:
+  - {fileID: 8167519533575722358, guid: 5285ae527c160694dbb23b706668b012, type: 3}
+  - {fileID: 6085043821036503378, guid: 974c9f4bbe1a3654ca16515e37d0b1a2, type: 3}
+  - {fileID: 6824226619735876864, guid: 1f83e5233f128fd4cb04fac148528ee9, type: 3}
+  - {fileID: 3760027142350463144, guid: 5c939bdcc9e0a86468050ca4eeeccd06, type: 3}
+--- !u!4 &1404327271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404327269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.19996548, y: 1.5829314, z: 0.5398607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

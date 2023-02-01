@@ -1,107 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerateMap : MonoBehaviour
 {
-    [SerializeField]
-    //offset from the perlin map
-    private float m_OffsetX;
-    [SerializeField]
-    private float m_OffsetY;
+    [SerializeField] private GameObject[] m_BlockList;
+    [SerializeField] private float[] m_BlockListThreshold;
+    [SerializeField] private int m_Seed = 98742364;
+    [SerializeField] private float m_Scale = 35f;
+    [SerializeField] private float m_Frequency = 20f;
+    [SerializeField] private float m_Amplitud = 20f;
 
+    [SerializeField] private int m_SizeX = 50;
+    [SerializeField] private int m_SizeZ = 50;
 
-    //size of the area we will paint
-    [SerializeField]
-    private int m_Width;
-    [SerializeField]
-    private int m_Height;
+    private GameObject m_ActualBlock;
+    private Vector3 m_Position;
 
-    [Header("Biomes")]
-    //Scale
-    [SerializeField]
-    private float m_BiomesScale = 1000f;
-    //Scale
-    [SerializeField]
-    private float m_BiomesFrequency = 10f;
-
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float m_BiomaThreshold = 0.5f;
-
-    [Header("Aparicio Arbres")]
-
-    //Scale
-    [SerializeField]
-    private float m_Scale = 1000f;
-    //Scale
-    [SerializeField]
-    private float m_Frequency = 10f;
-
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float m_ObjecteThreshold = 0.9f;
-
-    //graphic
-    [SerializeField]
-    private GameObject[] m_Objectes;
-    private List<GameObject> m_LlistaObjectes;
-
-    void Start()
+    private void Start()
     {
-        m_LlistaObjectes = new List<GameObject>();
+        m_Position = transform.position;
+        m_ActualBlock = m_BlockList[2];
+        GenerateProceduralMap();
     }
 
-    void Update()
+    private void GenerateProceduralMap()
     {
-        //regenerar perlins
-        if (Input.GetKeyDown(KeyCode.P))
+        for (int x = 0; x < m_SizeX; x++)
         {
-            GenerarArbres();
-        }
-    }
-
-    private void GenerarArbres()
-    {
-        ClearArbres();
-
-        Debug.Log("Calculant Perlin Noise");
-        for (int y = 0; y < m_Height; y++)
-        {
-            for (int x = 0; x < m_Width; x++)
+            for (int z = 0; z < m_SizeZ; z++)
             {
-                float sample = CalculatePerlinNoise(x, y, m_Scale, m_Frequency);
 
-                if (sample >= m_ObjecteThreshold)
+                int y = (int)Mathf.Floor(CalculatePerlinNoise(x, z) * m_Amplitud);
+
+                /*
+                for (int i = 0; i <= y; i++)
                 {
-                    int indexObjecte = 0;
-                    if (CalculatePerlinNoise(x, y, m_BiomesScale, m_BiomesFrequency) >= m_BiomaThreshold)
-                        indexObjecte = 1;
+                    //buscar el bloque
+                    float valorPerlin = i / m_Amplitud;
 
-                    GameObject arbre = Instantiate(m_Objectes[indexObjecte], transform);
-                    arbre.transform.position = new Vector3(x, (x+y), y);
-                    m_LlistaObjectes.Add(arbre);
+                    int indiceBloque = 0;
+                    for (int j = 0; j < m_BlockListThreshold.Length; j++)
+                    {
+                        if (valorPerlin <= m_BlockListThreshold[j])
+                        {
+                            indiceBloque = j;
+                            break;
+                        }
+                    }
+                    
+                    GameObject block = Instantiate(m_BlockList[indiceBloque], transform);
+                    block.transform.position = new Vector3(m_Position.x + x, i, m_Position.z + z);
                 }
+                */
+                
+                    //buscar el bloque
+                    float valorPerlin = y / m_Amplitud;
+
+                    int indiceBloque = 0;
+                    for (int j = 0; j < m_BlockListThreshold.Length; j++)
+                    {
+                        if (valorPerlin <= m_BlockListThreshold[j])
+                        {
+                            indiceBloque = j;
+                            break;
+                        }
+                    }
+
+                    GameObject block = Instantiate(m_BlockList[indiceBloque], transform);
+                    block.transform.position = new Vector3(m_Position.x + x, y, m_Position.z + z);
             }
         }
     }
-
-    private float CalculatePerlinNoise(int x, int y, float scale, float frequency)
+    private float CalculatePerlinNoise(int x, int z)
     {
-        float yCoord = m_OffsetY + (y / scale) * frequency;
-        float xCoord = m_OffsetX + (x / scale) * frequency;
-        return Mathf.PerlinNoise(xCoord, yCoord);
+        return Mathf.PerlinNoise(m_Seed + (x / m_Scale) * m_Frequency, m_Seed + (z / m_Scale) * m_Frequency);
     }
-
-    private void ClearArbres()
-    {
-        while (m_LlistaObjectes.Count > 0)
-        {
-            Destroy(m_LlistaObjectes[0]);
-            m_LlistaObjectes.RemoveAt(0);
-        }
-    }
-
 
 }
 

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6bd7a480792fd489c0de1e81020158, type: 3}
+  m_Name: Desert
+  m_EditorClassIdentifier: 
+  BiomeName: DESERT
+  Octaves: 0
+  Frecuency: 2
+  Lacunarity: 0
+  PutTrees: 0
+  m_BlockList:
+  - {fileID: 7774129053423850694, guid: e4103d0b203b2ef48846e51abbe9103a, type: 3}
+  m_BlocksThreshold:
+  - 1

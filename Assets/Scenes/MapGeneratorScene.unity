@@ -287,6 +287,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &858001275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858001277}
+  - component: {fileID: 858001276}
+  m_Layer: 0
+  m_Name: Map Generator (Normal Biomes)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &858001276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858001275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b955ee8ac6516840ad75b912c094f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BlockList:
+  - {fileID: 6085043821036503378, guid: 974c9f4bbe1a3654ca16515e37d0b1a2, type: 3}
+  - {fileID: 789497969744084294, guid: ebcbd72bec050d141b6e08daa922f1a1, type: 3}
+  - {fileID: 3760027142350463144, guid: 5c939bdcc9e0a86468050ca4eeeccd06, type: 3}
+  - {fileID: 6329040136589489536, guid: 68b157fa9e6ff4245b8a79db5cc010e4, type: 3}
+  m_BlockListThreshold:
+  - 0.2
+  - 0.3
+  - 0.8
+  - 1
+  m_Seed: 5234
+  m_Scale: 100
+  m_Frequency: 5
+  m_Amplitud: 20
+  m_SizeX: 200
+  m_SizeZ: 200
+  m_TreeList:
+  - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}
+  m_TreeFrequency: 10
+  m_TreeThreshold: 0.65
+  m_TreeDensity: 7
+--- !u!4 &858001277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858001275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404327269
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,12 +363,12 @@ GameObject:
   - component: {fileID: 1404327271}
   - component: {fileID: 1404327270}
   m_Layer: 0
-  m_Name: Map Generator
+  m_Name: Map Generator (Linear Biomes)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1404327270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +430,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1566704173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566704175}
+  - component: {fileID: 1566704174}
+  m_Layer: 0
+  m_Name: Map Generator (Biomes)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1566704174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566704173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d284282c861747c48a37ef9913141074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BiomesScriptable:
+  - {fileID: 11400000, guid: ecf59aa8856a0d3438d7d36960c077f1, type: 2}
+  - {fileID: 11400000, guid: e1d68b6b51498194badbe3c822223687, type: 2}
+  - {fileID: 11400000, guid: d4035192fae804a4299838541a2154fd, type: 2}
+  - {fileID: 11400000, guid: 4ad12ba158cabd94fbdaf6e3c05ae597, type: 2}
+  m_BiomesThreshold:
+  - 0.2
+  - 0.4
+  m_Width: 50
+  m_Height: 50
+  m_Seed: 765456
+  m_Scale: 35
+  m_Frequency: 5
+  m_Amplitud: 20
+  m_TreeList:
+  - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}
+  m_TreeFrequency: 10
+  m_TreeThreshold: 0.5
+  m_TreeDensity: 7
+--- !u!4 &1566704175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566704173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2419417266825905364
 MonoBehaviour:
@@ -536,7 +664,7 @@ Transform:
   m_Children:
   - {fileID: 2419417268177778431}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2419417267065711334
 CapsuleCollider:

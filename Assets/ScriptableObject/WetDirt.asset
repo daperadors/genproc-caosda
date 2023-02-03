@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6bd7a480792fd489c0de1e81020158, type: 3}
+  m_Name: WetDirt
+  m_EditorClassIdentifier: 
+  BiomeName: WETDIRT
+  Octaves: 0
+  Frecuency: 6
+  Lacunarity: 0
+  PutTrees: 1
+  m_BlockList:
+  - {fileID: 6824226619735876864, guid: 1f83e5233f128fd4cb04fac148528ee9, type: 3}
+  - {fileID: 789497969744084294, guid: ebcbd72bec050d141b6e08daa922f1a1, type: 3}
+  m_BlocksThreshold:
+  - 0.3
+  - 1

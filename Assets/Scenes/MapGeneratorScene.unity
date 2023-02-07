@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &858001276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,17 +326,21 @@ MonoBehaviour:
   - 0.3
   - 0.8
   - 1
+  m_MineralList:
+  - {fileID: 1255804578141369213, guid: 3e8564746ceab004aaebed693549f71d, type: 3}
+  - {fileID: 1592937142698022971, guid: 88875390fa446bd49a10f2c504dfa8a6, type: 3}
+  - {fileID: 1828599018556131905, guid: 6151f9dc0faf1764aaefee1ea43d136a, type: 3}
   m_Seed: 5234
   m_Scale: 100
   m_Frequency: 5
   m_Amplitud: 20
-  m_SizeX: 200
-  m_SizeZ: 200
+  m_SizeX: 100
+  m_SizeZ: 100
   m_TreeList:
   - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}
   m_TreeFrequency: 10
-  m_TreeThreshold: 0.65
-  m_TreeDensity: 7
+  m_TreeThreshold: 0.357
+  m_TreeDensity: 20
 --- !u!4 &858001277
 Transform:
   m_ObjectHideFlags: 0
@@ -447,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1566704174
 MonoBehaviour:
   m_ObjectHideFlags: 0

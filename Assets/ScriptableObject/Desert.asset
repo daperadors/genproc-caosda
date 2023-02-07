@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Desert
   m_EditorClassIdentifier: 
   BiomeName: DESERT
-  Octaves: 0
-  Frecuency: 2
-  Lacunarity: 0
-  PutTrees: 0
+  Frequency: 2
+  Amplitude: 10
+  Octaves: 8
+  Lacunarity: 6
+  Persistence: 6
   m_BlockList:
   - {fileID: 7774129053423850694, guid: e4103d0b203b2ef48846e51abbe9103a, type: 3}
   m_BlocksThreshold:
   - 1
+  PutObjects: 0
+  ObjectsFrequency: 0
+  m_Objects: []
+  m_ObjectsThreshold: []

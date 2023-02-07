@@ -18,12 +18,11 @@ public class GenerateMapNB : MonoBehaviour
 
     [Header("Trees var")]
     [SerializeField] private GameObject[] m_TreeList;
-
-    [Header("Biome var")]
     [SerializeField] private float m_TreeFrequency = 10f;
     [Range(0f, 1f)]
     [SerializeField] private float m_TreeThreshold = 0.5f;
     [SerializeField, Range(20f, 0f)] private int m_TreeDensity;
+
 
     private int[,] m_Terrain;
 
@@ -115,7 +114,9 @@ public class GenerateMapNB : MonoBehaviour
                     {
                         if (m_Terrain[x, y] > m_TreeThreshold)
                         {
-                            GameObject tree = Instantiate(m_TreeList[0], transform);
+                            GameObject tree = null;
+                            if (Random.Range(0, 6) == 5) tree = tree =Instantiate(m_TreeList[1], transform);
+                            else tree = Instantiate(m_TreeList[0], transform);
                             tree.transform.position = new Vector3(x, m_Terrain[x, y] + 1, y);
                         }
                     }

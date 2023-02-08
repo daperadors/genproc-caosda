@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Snow
   m_EditorClassIdentifier: 
   BiomeName: SNOW
-  Frequency: 20
-  Amplitude: 29
+  Frequency: 80
+  Amplitude: 30
   Octaves: 3
-  Lacunarity: 7
-  Persistence: 7
+  Lacunarity: 2.327
+  Persistence: 0.292
   m_BlockList:
   - {fileID: 6329040136589489536, guid: 68b157fa9e6ff4245b8a79db5cc010e4, type: 3}
   - {fileID: 6313610418161459660, guid: 4ae5a56315560244cb5fc29f1bbe21e5, type: 3}

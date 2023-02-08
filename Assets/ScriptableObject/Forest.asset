@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   BiomeName: FOREST
-  Frequency: 5
-  Amplitude: 34
-  Octaves: 6
-  Lacunarity: 3
-  Persistence: 8
+  Frequency: 80
+  Amplitude: 10
+  Octaves: 1
+  Lacunarity: 2
+  Persistence: 0.341
   m_BlockList:
   - {fileID: 6085043821036503378, guid: 974c9f4bbe1a3654ca16515e37d0b1a2, type: 3}
   - {fileID: 8167519533575722358, guid: 5285ae527c160694dbb23b706668b012, type: 3}
@@ -26,7 +26,12 @@ MonoBehaviour:
   - 0.2
   - 0.3
   - 1
-  PutObjects: 0
+  PutObjects: 1
   ObjectsFrequency: 0
-  m_Objects: []
-  m_ObjectsThreshold: []
+  ObjectsDensity: 2
+  m_Objects:
+  - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}
+  - {fileID: 3703999271090043398, guid: 84bd64eff780a5b4eaa1a221c4ba2dcc, type: 3}
+  m_ObjectsThreshold:
+  - 0.5
+  - 1

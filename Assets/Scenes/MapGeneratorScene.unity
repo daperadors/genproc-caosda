@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -467,9 +467,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Width: 50
   m_Height: 50
-  m_Seed: 765456
-  m_Scale: 35
-  m_BiomeFrequency: 20
+  m_Seed: 74574
+  m_Scale: 1000
+  m_BiomeFrequency: 10
   m_BiomesScriptable:
   - {fileID: 11400000, guid: ecf59aa8856a0d3438d7d36960c077f1, type: 2}
   - {fileID: 11400000, guid: e1d68b6b51498194badbe3c822223687, type: 2}
@@ -478,7 +478,9 @@ MonoBehaviour:
   m_BiomesThreshold:
   - 0.2
   - 0.4
-  m_Frequency: 5
+  - 0.8
+  - 1
+  m_Frequency: 1
   m_Amplitud: 20
   m_TreeList:
   - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}

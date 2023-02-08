@@ -1,4 +1,3 @@
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class GenerateMapBiomes : MonoBehaviour
@@ -42,60 +41,47 @@ public class GenerateMapBiomes : MonoBehaviour
         {
             for (int y = 0; y < m_Height; y++)
             {
-                m_Biome[x,y] = CalculatePerlinNoise(x, y, m_Scale, m_BiomeFrequency);
-                Biomes biomaActual = GetBiome(x, y);
-                
+                m_Biome[x, y] = CalculatePerlinNoise(x, y, m_Scale, m_BiomeFrequency);
+                Biomes biomaActual = GetByProbability<Biomes>(m_Biome[x, y], m_BiomesThreshold, m_BiomesScriptable);
                 int alturaTerreno = (int)Mathf.Floor(CalculatePerlinNoise(x, y, m_Scale, biomaActual.Frequency, biomaActual.Amplitude, biomaActual.Octaves, biomaActual.Lacunarity, biomaActual.Persistence));
+
                 //pintar bloque
-                GameObject block = Instantiate(GetBloqueBioma(biomaActual, alturaTerreno/ biomaActual.Amplitude), transform);
-                GameObject block2 = Instantiate(GetBloqueBioma(biomaActual, (alturaTerreno -1)/ biomaActual.Amplitude), transform);
+                GameObject block = Instantiate(GetByProbability<GameObject>(alturaTerreno / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList), transform);
+                GameObject block2 = Instantiate(GetByProbability<GameObject>((alturaTerreno - 1) / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList), transform);
 
                 block.transform.position = new Vector3(m_Position.x + x, alturaTerreno, m_Position.y + y);
                 block2.transform.position = new Vector3(m_Position.x + x, alturaTerreno - 1, m_Position.y + y);
 
-                if(biomaActual.PutObjects)
+                if (biomaActual.PutObjects)
                 {
                     //ruido objeto
-                    //CalculatePerlinNoise()
+                    float perlinObject = CalculatePerlinNoise(x, y, m_Scale, biomaActual.ObjectsFrequency);
+                    GenerateObject(perlinObject, biomaActual);
 
                 }
             }
         }
     }
-    private Biomes GetBiome(int x, int y)
+    private void GenerateObject(float perlin, Biomes biome)
     {
-        float biomeValue = m_Biome[x, y];
-
-        int indiceBioma = 0;
-        for (int i = 0; i < m_BiomesThreshold.Length; i++)
-        {
-            if (biomeValue <= m_BiomesThreshold[i])
-            {
-                indiceBioma = i;
-                break;
-            }
-        }
-
-        return m_BiomesScriptable[indiceBioma];
+        GameObject block = Instantiate(GetByProbability<GameObject>(perlin, biome.m_ObjectsThreshold, biome.m_Objects), transform);
+        print(block);
     }
-
-    //revisar
-    private GameObject GetBloqueBioma(Biomes bioma, float valorPerlin)
+    private T GetByProbability<T>(float valorPerlin, float[] arrayThreshold, T[] genericArray)
     {
 
         int indiceBloque = 0;
-        for (int i = 0; i < bioma.m_BlocksThreshold.Length; i++)
+        for (int i = 0; i < arrayThreshold.Length; i++)
         {
-            if (valorPerlin <= bioma.m_BlocksThreshold[i])
+            if (valorPerlin <= arrayThreshold[i])
             {
                 indiceBloque = i;
                 break;
             }
         }
 
-        return bioma.m_BlockList[indiceBloque];
+        return genericArray[indiceBloque];
     }
-
     private float CalculatePerlinNoise(int x, int y, float scale, float frequency, float amplitude = 1, int octaves = 0, float lacunarity = 0f, float persistence = 0f)
     {
         float perlinValue = Mathf.PerlinNoise(m_Seed + (x / scale) * frequency, m_Seed + (y / scale) * frequency);
@@ -107,8 +93,8 @@ public class GenerateMapBiomes : MonoBehaviour
             float yOctaveCoord = m_Seed + (y / m_Scale) * newFreq;
 
             float octaveSample = Mathf.PerlinNoise(xOctaveCoord, yOctaveCoord);
-            
-            octaveSample = (octaveSample - .5f ) * (persistence / octave);
+
+            octaveSample = (octaveSample - .5f) * (persistence / octave);
             perlinValue += octaveSample;
         }
         return perlinValue * amplitude;

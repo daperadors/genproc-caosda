@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Desert
   m_EditorClassIdentifier: 
   BiomeName: DESERT
-  Frequency: 2
-  Amplitude: 10
-  Octaves: 8
-  Lacunarity: 6
-  Persistence: 6
+  Frequency: 20
+  Amplitude: 7
+  Octaves: 2
+  Lacunarity: 2.438
+  Persistence: 0.612
   m_BlockList:
   - {fileID: 7774129053423850694, guid: e4103d0b203b2ef48846e51abbe9103a, type: 3}
   m_BlocksThreshold:

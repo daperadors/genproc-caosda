@@ -115,7 +115,7 @@ public class GenerateMapNB : MonoBehaviour
                         if (m_Terrain[x, y] > m_TreeThreshold)
                         {
                             GameObject tree = null;
-                            if (Random.Range(0, 6) == 5) tree = tree =Instantiate(m_TreeList[1], transform);
+                            if (Random.Range(0, 6) == 5) tree =Instantiate(m_TreeList[1], transform);
                             else tree = Instantiate(m_TreeList[0], transform);
                             tree.transform.position = new Vector3(x, m_Terrain[x, y] + 1, y);
                         }

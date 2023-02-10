@@ -22,7 +22,10 @@ MonoBehaviour:
   - {fileID: 7774129053423850694, guid: e4103d0b203b2ef48846e51abbe9103a, type: 3}
   m_BlocksThreshold:
   - 1
-  PutObjects: 0
-  ObjectsFrequency: 0
-  m_Objects: []
-  m_ObjectsThreshold: []
+  PutObjects: 1
+  ObjectsFrequency: 20
+  ObjectsDensity: 50
+  m_Objects:
+  - {fileID: 3498639958344608888, guid: 789efe8b563f05f4f9bc6fcdaa763066, type: 3}
+  m_ObjectsThreshold:
+  - 0

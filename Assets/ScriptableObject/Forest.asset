@@ -27,11 +27,11 @@ MonoBehaviour:
   - 0.3
   - 1
   PutObjects: 1
-  ObjectsFrequency: 0
-  ObjectsDensity: 2
+  ObjectsFrequency: 20
+  ObjectsDensity: 4
   m_Objects:
   - {fileID: 3104716763213186125, guid: 8d22322abda2eba4ebe8b384ccefe66a, type: 3}
   - {fileID: 3703999271090043398, guid: 84bd64eff780a5b4eaa1a221c4ba2dcc, type: 3}
   m_ObjectsThreshold:
+  - 0.4
   - 0.5
-  - 1

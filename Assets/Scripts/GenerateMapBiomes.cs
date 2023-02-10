@@ -20,12 +20,8 @@ public class GenerateMapBiomes : MonoBehaviour
     private int[,] m_Terrain;
     private float[,] m_Biome;
 
-    [Header("Tree info")]
-    [SerializeField] private GameObject[] m_TreeList;
-    [SerializeField] private float m_TreeFrequency = 10f;
-    [Range(0f, 1f)]
-    [SerializeField] private float m_TreeThreshold = 0.5f;
-    [SerializeField, Range(10f, 0f)] private int m_TreeDensity;
+    [Header("Minerals info")]
+    [SerializeField] private GameObject[] m_MineralList;
 
     void Start()
     {
@@ -46,28 +42,45 @@ public class GenerateMapBiomes : MonoBehaviour
                 int alturaTerreno = (int)Mathf.Floor(CalculatePerlinNoise(x, y, m_Scale, biomaActual.Frequency, biomaActual.Amplitude, biomaActual.Octaves, biomaActual.Lacunarity, biomaActual.Persistence));
 
                 //pintar bloque
-                GameObject block = Instantiate(GetByProbability<GameObject>(alturaTerreno / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList), transform);
-                GameObject block2 = Instantiate(GetByProbability<GameObject>((alturaTerreno - 1) / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList), transform);
+                GameObject block = Instantiate(GetByProbability<GameObject>(alturaTerreno / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList, m_MineralList, biomaActual.BiomeName == "FOREST" ? true : false), transform);
+                GameObject block2 = Instantiate(GetByProbability<GameObject>((alturaTerreno - 1) / biomaActual.Amplitude, biomaActual.m_BlocksThreshold, biomaActual.m_BlockList, m_MineralList, biomaActual.BiomeName == "FOREST" ? true : false), transform);
 
                 block.transform.position = new Vector3(m_Position.x + x, alturaTerreno, m_Position.y + y);
                 block2.transform.position = new Vector3(m_Position.x + x, alturaTerreno - 1, m_Position.y + y);
 
+                m_Terrain[x, y] = alturaTerreno;
                 if (biomaActual.PutObjects)
                 {
                     //ruido objeto
-                    float perlinObject = CalculatePerlinNoise(x, y, m_Scale, biomaActual.ObjectsFrequency);
-                    GenerateObject(perlinObject, biomaActual);
+                    GenerateObject(biomaActual, x, y);
 
                 }
             }
         }
     }
-    private void GenerateObject(float perlin, Biomes biome)
+    private void GenerateObject(Biomes biome, int x, int y)
     {
-        GameObject block = Instantiate(GetByProbability<GameObject>(perlin, biome.m_ObjectsThreshold, biome.m_Objects), transform);
-        print(block);
+        float perlin = CalculatePerlinNoise(x, y, m_Scale, biome.ObjectsFrequency);
+        int random = Random.Range(0, biome.m_Objects.Length);
+       // print(biome.m_ObjectsThreshold[random] + " "+ perlin);
+        //if (perlin >= biome.m_ObjectsThreshold[random])
+        {
+            if (Random.Range(0, biome.ObjectsDensity) == 1)
+            {
+
+                if (m_Terrain[x, y] > biome.m_ObjectsThreshold[random] * 10)
+                {
+                    print(random +" "+ biome.m_Objects.Length);
+                    GameObject obj = Instantiate(biome.m_Objects[random], transform);
+                    obj.transform.position = new Vector3(x, (m_Terrain[x, y] + 1)+obj.transform.position.y, y);
+                }
+            }
+        }
+
+
+
     }
-    private T GetByProbability<T>(float valorPerlin, float[] arrayThreshold, T[] genericArray)
+    private T GetByProbability<T>(float valorPerlin, float[] arrayThreshold, T[] genericArray, T[] genericArrayObjects = null, bool minerals = false)
     {
 
         int indiceBloque = 0;
@@ -79,7 +92,29 @@ public class GenerateMapBiomes : MonoBehaviour
                 break;
             }
         }
-
+        if (minerals)
+        {
+            if (indiceBloque == 0)
+            {
+                float rand = Random.Range(0, 20);
+                if (rand == 1)
+                {
+                    return genericArrayObjects[0];
+                }
+                else if (rand >= 5 && rand <= 8)
+                {
+                    return genericArrayObjects[1];
+                }
+                else if (rand == 9 || rand == 12)
+                {
+                    return genericArrayObjects[2];
+                }
+                else
+                {
+                    return genericArray[indiceBloque];
+                }
+            }
+        }
         return genericArray[indiceBloque];
     }
     private float CalculatePerlinNoise(int x, int y, float scale, float frequency, float amplitude = 1, int octaves = 0, float lacunarity = 0f, float persistence = 0f)
